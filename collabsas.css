@@ -1,0 +1,615 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(180deg, rgb(42, 163, 165),#0f49b6 );
+  overflow-x: hidden;
+  transform: none;
+
+  position: relative;
+  padding: 5px;
+}
+
+/* navbar side */
+.sidebar {
+  background: #1e1e1e;
+  height: 100vh;              
+  padding-top: 30px;          
+  position: fixed;
+  left: 330px;
+  transition: 0.5s ease-in-out;
+  opacity: 1;
+  z-index: 999;
+  top: 0;
+  transform: none;
+  overflow: visible;   
+  /* make sure visible, otherwise dropdown wont show up */
+  
+  margin: 0;
+}
+
+
+.sidebar:hover{
+    width: 220px;
+    transition: 0.5s ease-in-out;
+}
+
+.sidebar:not(:hover){
+    width: 50px;
+    transition: 1s ease;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+
+.sidebar ul li:first-child {
+  margin-top: 5px;
+}
+
+.sidebar ul li {
+  position: relative;
+
+  display: block;
+ 
+  margin: 0; 
+  /* space between icons */
+
+  padding: 0;
+
+}
+
+/* a href */
+.sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 18px;
+  white-space: nowrap;
+  color: #fff;
+  text-decoration: none;
+  transition: 0.2s ease;
+
+  margin: 10px 0;
+}
+
+/* icons */
+.sidebar i{
+    font-size: 18px;
+    width: 20px;
+    text-align: center;
+    transform: translateX(-3px);
+}
+
+
+
+.sidebar:not(:hover) .label{
+    opacity: 0;
+    pointer-events: none;
+
+    transform: translateX(-10px)
+}
+
+.sidebar:hover .label{
+    opacity: 100%;
+    z-index: 2;
+}
+
+.label{
+    transition: .2s ease;
+}
+
+.sidebar a:hover {
+  background: #333;
+  transition: background 0.2s;
+}
+
+/* ===== DROPRIGHT MENU ===== */
+.dropright:hover .submenu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+  transition: 0.25s ease;
+}
+
+.dropright {
+  position: relative;
+}
+
+.submenu {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 190px;
+  background: #2a2a2a;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(10px);
+
+}
+
+.submenu li a {
+  padding: 10px 16px;
+}
+
+/* a href scrolldown */
+html {
+  scroll-behavior: smooth;
+}
+
+/* must add space b4 { */
+
+
+
+
+
+
+
+.video{
+    height: 1000px;
+    width: 380px;
+    margin: none;
+    padding: 0;
+    left: -10px;
+    top: -200px;
+    position: fixed;
+}
+
+.text{
+    left: 425px;
+    margin-top: 30px;
+    width: 800px;
+    overflow-x: hidden;
+    overflow-y: visible;
+    position: relative;
+    text-align: center;
+    z-index: 10;
+    overflow: visible;
+}
+
+p{
+    text-align: justify;
+    text-align-last: center;
+    padding: 10px;
+    color: rgb(255, 255, 255);
+}
+
+.card p{
+  color: #1e1e1e;
+}
+
+.g p{
+  color: #1e1e1e;
+}
+
+.para-block.left p, .para-block.right p {
+  color: #1e1e1e;
+  padding-top: 10px;
+} 
+
+.para-block.left p.h, .para-block.right p.h{
+  color: #ffffff;
+}
+
+/* list */
+
+ol{
+    list-style-position: inside;
+    background-color: rgb(243, 243, 243);
+    border-radius: 15px;
+    margin: 20px;
+    padding: 50px;
+}
+
+ol li.a{
+  list-style: upper-alpha;
+  
+}
+
+li.a{
+    background-color: rgb(71, 181, 116);
+    margin: 5px;
+    font-size: 30px;
+ 
+}
+
+
+.g{
+  padding:8px
+}
+
+ul.a li{
+    list-style-type:disc;
+    text-align: justify;
+    /* here for brown */
+}
+
+ul.a{
+  margin: 10px;
+}
+
+h1:not(.main){
+  padding: 20px;
+  margin-top: 50px;
+  background-color: aliceblue;
+}
+
+
+/* scrolling squares */
+.side-scroll {
+    position: fixed;
+    left: 10px;
+    top: 0;
+    width: 300px;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.scroll-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: scrollUp 17s linear infinite;
+    animation-play-state: running;
+}
+
+@keyframes scrollUp {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-75%); }
+}
+
+.side-scroll:hover .scroll-content {
+    animation-play-state: paused;
+}
+
+/* Square container */
+.square {
+    width: 250px;
+    height: 250px;
+    margin: 20px;
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    color: white;
+}
+
+/* Image inside square */
+.square img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    position: absolute;
+    z-index: 1;
+}
+
+/* Orange overlay */
+.square::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    background: rgba(230, 126, 34, 0);
+    transition: background 0.3s ease;
+}
+
+.square:hover::after {
+    background: rgba(230, 126, 34, 0.8);
+    z-index: 2;
+}
+
+/* Text spans (title + description) */
+.square span {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    line-height: 1.3;
+    padding: 5px;
+    color: #fff;
+
+    opacity: 0;
+    transform: translateY(10px);
+    z-index: 3;
+
+    /* Smooth fade in/out */
+    animation: hoverOut 0.45s ease forwards;
+}
+
+/* Title */
+.square span:first-child {
+    font-size: 26px;
+    font-weight: bold;
+    top: 20px;
+    transform: translateY(-10px);
+}
+
+/* Body text */
+.square span:last-child {
+    font-size: 16px;
+    line-height: 1;
+    top: 60px;
+    padding: 0 10px;
+}
+
+/* Fade-in on hover */
+.square:hover span {
+    animation: hoverIn 0.35s ease forwards;
+}
+
+/* Keyframes */
+@keyframes hoverIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hoverOut {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(10px); }
+}
+
+
+/* BG */
+img.titlebg{
+  z-index: -10;
+  position: absolute;
+  height: 200px;
+  width: 900px;
+  left: 380px;
+  opacity: 80%;
+  margin-top: -50px;
+}
+
+h2.first{
+  margin-top: 40px;
+  margin-bottom: -15px;
+}
+
+h1.main{
+  font-size: 70px;
+  position: relative;
+  text-align: center;
+  margin-top: -10px;
+  width: 800px;
+  padding-bottom: 35px;
+  color: aliceblue;
+}
+
+img.sdgs{
+  width: 800px;
+  background-color: aliceblue;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+p.i{
+margin-bottom: 15px;
+margin-top: 15px;
+}
+
+
+
+
+/* NEWw */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  /* 3 columns */
+  gap: 20px;
+  margin-top: 20px;
+  z-index: 5;
+  position: relative;
+
+  overflow: visible;
+  /* ?? */
+  
+}
+
+.card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  position: relative;
+  overflow: visible;
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.card:hover {
+  transform: scale(1.07) rotate(1deg);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+
+/* double grid? */
+/* no. */
+
+/* Card style */
+/* no. */
+
+
+
+/* Sticker (cute floating images) */
+.sticker {
+  z-index: 10;
+  width: 100px;
+  position: absolute;
+  top: -110px;
+  left: 100px;
+  animation: wiggle 1.2s infinite ease-in-out;
+  transform-origin: center;
+}
+
+.s1 {
+  z-index: 10;
+  width: 100px;
+  position: absolute;
+  left: 100px;
+  margin-top: 15px;
+  animation: wiggle 1.2s infinite ease-in-out;
+  transform-origin: center;
+}
+
+.s1s {
+  z-index: 10;
+  width: 100px;
+  position: absolute;
+  left: 100px;
+  margin-top: 35px;
+  animation: wiggle 1.2s infinite ease-in-out;
+  transform-origin: center;
+}
+
+.s2 {
+  z-index: 10;
+  width: 100px;
+  position: absolute;
+  right: 50px;
+  margin-top: 35px;
+  animation: wiggle 1.2s infinite ease-in-out;
+  transform-origin: center;
+}
+
+.s-peran {
+  z-index: 10;
+  width: 100px;
+  position: absolute;
+  margin-top: -90px;
+  margin-left: 200px;
+
+  pointer-events: none;
+  animation: wiggle 1.2s infinite ease-in-out;
+  transform-origin: center;
+}
+
+@keyframes wiggle {
+  0%   { transform: rotate(0deg); }
+  50%  { transform: rotate(3deg); }
+  100% { transform: rotate(0deg); }
+}
+
+
+
+/* solusi — container for each paragraph + image */
+.para-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin: 30px 0;
+  overflow: hidden; /* prevents weird spacing */
+
+  text-align: justify;
+}
+
+/* Picture styling */
+.para-block img {
+  width: 300px;
+  height: 200px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* LEFT IMAGE */
+.para-block.left {
+  flex-direction: row;        /* image → text */
+  margin: 0
+}
+
+/* RIGHT IMAGE */
+.para-block.right {
+  flex-direction: row-reverse; /* text ← image */
+  margin: 0;
+}
+
+/* Paragraph text */
+.para-block p {
+  flex: 1;
+  line-height: 1.45;
+  margin: 0; 
+  text-align: justify; 
+
+  display: flex;
+  align-items: center;   /* FIX: centers image and text */
+  gap: 20px;
+
+  align-items: flex-start;
+}
+
+.para-block p {
+  text-align: justify !important;
+  margin: 0;
+}
+
+/* Prevent global <p> spacing glitches */
+p {
+  overflow: visible;    /* restore normal text flow */
+  clear: none;          /* avoid breaking layout */
+  line-height: 1.45;
+}
+
+
+/* overwrite? */
+/* rewrite overwrite w old one later */
+.para-block {
+  display: flex;
+  align-items: center;  /* FIX image alignment */
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.para-block.right {
+  flex-direction: row-reverse;
+}
+
+.para-block img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.para-block p {
+  text-align: justify !important; /* FIX text alignment */
+  margin: 0;
+}
+
+ol.kerjasama li {
+  padding: 10px;
+  text-align: justify;
+}
+
+ol.kerjasama {
+  list-style-position: inside;
+}
+
+ol.kerjasama p {
+  text-align: justify;
+}
+
+ol.dp p {
+  text-align: justify;
+}
+/* WHY WONT THIS WORK????? */
+
+
+.sdgs {
+  border-radius: 15px;
+}
+
+h2 {
+  color: #ffffff;
+}
+
+
